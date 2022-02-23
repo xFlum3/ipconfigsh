@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ip=$(ip a | head -n 2 | tail -n 1 | cut -d"/" -f1 | cut -d' ' -f6)
+ip=$(ip a | grep "inet "| head -n 2 | tail -n 1 | cut -d"/" -f1 | cut -d' ' -f6)
 echo "IP Address = $ip"
 
 subnet=$(ip a | grep "inet " | head -n 2 | tail -n 1 | cut -d"/" -f2 | cut -d' ' -f1)
