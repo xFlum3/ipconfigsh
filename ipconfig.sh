@@ -25,4 +25,8 @@ echo "DNS Server : $dns"
 
 ipv6=$(ip a | grep "inet6 " | head -n 2 | tail -n 1 | cut -d"/" -f1 | cut -d' ' -f6)
 echo "IPV6: $ipv6"
+
+#PiHole Users!!!!!
+#pihole=$(lxc list | grep "(eth0) " | cut -d"|" -f4| cut -d" " -f2)
+#echo "PiHole IP: $pihole"
 exit 0
