@@ -16,6 +16,6 @@ echo "Default Gateway : $default"
 dhcp=$(cat /var/lib/dhcp/dhclient.leases | grep "dhcp-server" | tail -n1 | cut -d"-" -f3 | cut -d" " -f2 | cut -d ";" -f1)
 echo "DHCP Server IP : $dhcp"
 
-dns=$(systemd-resolve --status | grep "DNS " | head -n 2 | tail -n 1 | cut -d":" -f2)
+dns=$(cat /etc/resolv.conf | grep "nameserver" /etc/resolv.conf | cut -d" " -f2)
 echo "DNS Server : $dns"
 exit 0
