@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "*****************************************"
+echo "* Linux IP-Config Command Made by AlonD *"
+echo "*****************************************"
+
 ip=$(ip a | grep "inet "| head -n 2 | tail -n 1 | cut -d"/" -f1 | cut -d' ' -f6)
 echo "IP Address = $ip"
 
@@ -16,6 +20,9 @@ echo "Default Gateway : $default"
 dhcp=$(cat /var/lib/dhcp/dhclient.leases | grep "dhcp-server" | tail -n1 | cut -d"-" -f3 | cut -d" " -f2 | cut -d ";" -f1)
 echo "DHCP Server IP : $dhcp"
 
-dns=$(cat /etc/resolv.conf | grep "nameserver" /etc/resolv.conf | cut -d" " -f2)
+dns=$(systemd-resolve --status | grep "DNS " | head -n 2 | tail -n 1 | cut -d":" -f2)
 echo "DNS Server : $dns"
+
+ipv6=$(ip a | grep "inet6 " | head -n 2 | tail -n 1 | cut -d"/" -f1 | cut -d' ' -f6)
+echo "IPV6: $ipv6"
 exit 0
