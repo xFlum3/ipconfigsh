@@ -46,11 +46,4 @@ echo "Time Zone:$tz"
 lang=$(locale | head -n 1 | cut -d"=" -f2 | cut -d"." -f1)
 echo "Language: $lang"
 
-#PiHole Users!!!!!
-pihole=$(lxc list | grep "(eth0) " | cut -d"|" -f4 | cut -d" " -f2)
-if test $pihole != $pihole; then
-	echo "PiHole Cannot be found"
-else
-	echo "PiHole IP: $pihole"
-fi
 exit 0
