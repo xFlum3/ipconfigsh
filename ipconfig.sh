@@ -27,8 +27,8 @@ echo "Default Gateway: $default"
 dhcp=$(ip r | head -n 1 | cut -d" " -f3)
 echo "DHCP Server IP: $dhcp"
 
-#dns=$(systemd-resolve --status | grep "DNS " | head -n 2 | tail -n 1 | cut -d":" -f2)
-dns=$(systemd-resolve --status | grep "Current" | tail -n 1 | cut -d" " -f6)
+#dns=$(systemd-resolve --status | grep "Current" | tail -n 1 | cut -d" " -f6)
+dns=$(cat /etc/resolv.conf | grep "nameserver " | head -n 1 |cut -d" " -f2)
 echo "DNS Server: $dns"
 
 ipv6=$(ip a | grep "inet6 " | head -n 2 | tail -n 1 | cut -d"/" -f1 | cut -d' ' -f6)
